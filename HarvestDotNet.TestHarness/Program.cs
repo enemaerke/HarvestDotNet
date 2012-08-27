@@ -18,6 +18,8 @@ namespace HarvestDotNet.TestHarness
       HttpTransmitter transmitter = new HttpTransmitter();
       Result<string> result = transmitter.ProcessRequest(uri, new Credentials {UserName = username, Password = password});
 
+      //HarvestProject project = ObjectResolver.Resolve<HarvestProject>(result.Value);
+
       Console.WriteLine(result.Value);
       Console.ReadKey();
     }
