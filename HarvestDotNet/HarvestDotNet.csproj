@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="HarvestProject.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="HttpTransmitter.cs" />
     <Compile Include="ObjectResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

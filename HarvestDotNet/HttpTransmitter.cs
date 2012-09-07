@@ -75,7 +75,7 @@ namespace HarvestDotNet
     internal bool IsSuccess {get; private set;}
     internal string Message {get; private set;}
 
-    internal static Result<T> Success<T>(T value)
+    internal static Result<T> Success(T value)
     {
       return new Result<T>
                {

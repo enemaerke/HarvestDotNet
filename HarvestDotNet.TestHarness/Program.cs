@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace HarvestDotNet.TestHarness
 {
@@ -9,27 +10,12 @@ namespace HarvestDotNet.TestHarness
   {
     static void Main(string[] args)
     {
-      string uri = GetFromConsole("Enter the uri (e.g. https://yoursubdomain.harvestapp.com/projects):");
-      string username = GetFromConsole("Enter your username (email):");
-      string password = GetFromConsole("Enter your password:");
-
-
-      //SampleFromHarvest.RunSample(uri, username, password);
-      HttpTransmitter transmitter = new HttpTransmitter();
-      Result<string> result = transmitter.ProcessRequest(uri, new Credentials {UserName = username, Password = password});
-
-      //HarvestProject project = ObjectResolver.Resolve<HarvestProject>(result.Value);
-
-      Console.WriteLine(result.Value);
-      Console.ReadKey();
-    }
-
-    private static string GetFromConsole(string prompt)
-    {
-      Console.WriteLine(prompt);
-      string response = Console.ReadLine();
-      Console.WriteLine();
-      return response;
+        Application.EnableVisualStyles();
+        Application.SetCompatibleTextRenderingDefault(false);
+        using(var form = new MainForm())
+        {
+            Application.Run(form);
+        }
     }
   }
 }

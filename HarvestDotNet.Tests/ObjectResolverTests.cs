@@ -12,10 +12,10 @@ namespace HarvestDotNet.Tests
     public void CanResolveHarvestProject()
     {
       string payload = TestUtil.GetResourceAsString("Data.ExampleHarvestProject.xml");
-      HarvestProject harvestProject = ObjectResolver.Resolve<HarvestProject>(payload);
-      Assert.NotNull(harvestProject);
+      Project project = ObjectResolver.Resolve<Project>(payload);
+      Assert.NotNull(project);
 
-      Assert.AreEqual("Test project", harvestProject.Name);
+      Assert.AreEqual("Test project", project.Name);
     }
   }
 }
