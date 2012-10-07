@@ -5,14 +5,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestDotNet", "HarvestDot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestDotNet.Tests", "HarvestDotNet.Tests\HarvestDotNet.Tests.csproj", "{F4C81FEA-FD9D-4583-B22F-9C5BB10B6448}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestDotNet.TestHarness", "HarvestDotNet.TestHarness\HarvestDotNet.TestHarness.csproj", "{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9595DAC7-8B7C-467D-A03B-DD4D6C94C04D}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestDotNet.TestApp", "HarvestDotNet.TestApp\HarvestDotNet.TestApp.csproj", "{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,16 +44,16 @@ Global
 		{F4C81FEA-FD9D-4583-B22F-9C5BB10B6448}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{F4C81FEA-FD9D-4583-B22F-9C5BB10B6448}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{F4C81FEA-FD9D-4583-B22F-9C5BB10B6448}.Release|x86.ActiveCfg = Release|Any CPU
-		{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
-		{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}.Debug|Mixed Platforms.Build.0 = Debug|x86
-		{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}.Debug|x86.ActiveCfg = Debug|x86
-		{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}.Debug|x86.Build.0 = Debug|x86
-		{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}.Release|Any CPU.ActiveCfg = Release|x86
-		{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}.Release|Mixed Platforms.ActiveCfg = Release|x86
-		{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}.Release|Mixed Platforms.Build.0 = Release|x86
-		{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}.Release|x86.ActiveCfg = Release|x86
-		{3043FDAD-86B3-47F6-AFEF-701F4E5A67E9}.Release|x86.Build.0 = Release|x86
+		{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}.Debug|x86.ActiveCfg = Debug|x86
+		{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}.Debug|x86.Build.0 = Debug|x86
+		{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}.Release|Any CPU.ActiveCfg = Release|x86
+		{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}.Release|Mixed Platforms.Build.0 = Release|x86
+		{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}.Release|x86.ActiveCfg = Release|x86
+		{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
