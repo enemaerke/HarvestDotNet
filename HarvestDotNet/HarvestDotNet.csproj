@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HarvestApiSettings.cs" />
+    <Compile Include="HarvestThrottleException.cs" />
     <Compile Include="Model\DayEntry.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="HarvestAPI.cs" />

@@ -1,16 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 using System.Xml.Serialization;
 using Newtonsoft.Json;
 
-namespace HarvestDotNet
+namespace HarvestDotNet.Model
 {
-  [XmlRoot("project")]
   public class Project
   {
-    [XmlElement("name")]
-    [JsonProperty("name")]
+    [JsonProperty(PropertyName = "active")]
+    public bool Active { get; set; }
+    [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
+    [JsonProperty(PropertyName = "created_at")]
+    public DateTime CreatedAt { get; set; }
+    [JsonProperty(PropertyName = "latest_record_at")]
+    public DateTime LatestRecordAt { get; set; }
+  }
+
+  public class ProjectInfo
+  {
+    [JsonProperty(PropertyName = "project")]
+    public Project Project { get; set; }
   }
 }

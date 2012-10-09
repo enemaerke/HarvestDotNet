@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using HarvestDotNet.Model;
 
 namespace HarvestDotNet
 {
@@ -32,10 +35,9 @@ namespace HarvestDotNet
     {
       return Request<Project>("/projects/{0}".ToFormat(projectID));
     }
-
-    public Task<List<Project>> GetProjects()
+    public Task<List<ProjectInfo>> GetProjects()
     {
-      return Request<List<Project>>("/projects");
+      return Request<List<ProjectInfo>>("/projects");
     }
 
     public Task<DayInformation> GetDay()
@@ -58,17 +60,24 @@ namespace HarvestDotNet
       return Request<DayEntry>("/daily/timer/{0}".ToFormat(dayEntryId));
     }
 
-    private Task<T> Request<T>(string relativePath)
+    private Task<T> Request<T>(string relativePath) where T:class
     {
       Uri completeUri = new Uri(m_settings.BaseUri, relativePath);
       return m_client.GetAsync(completeUri)
         .ContinueWith(t =>
                         {
-                          //ValidateResponse(t);
+                          RaiseThrottleExceptionIfNeeded(t);
                           t.Result.EnsureSuccessStatusCode();
 
                           return t.Result.Content.ReadAsAsync<T>();
-                        }).Unwrap();
+                        })
+        .Unwrap();
+    }
+
+    private void RaiseThrottleExceptionIfNeeded(Task<HttpResponseMessage> task)
+    {
+      if (task.Result.StatusCode == HttpStatusCode.ServiceUnavailable)
+            throw new HarvestThrottleException("Throttle limit reached");
     }
   }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace HarvestDotNet
+namespace HarvestDotNet.Model
 {
   [XmlRoot("day_entry")]
   public class DayEntry

@@ -21,6 +21,8 @@ namespace HarvestDotNet.Tests
 
       var projects = projectsTask.Result;
       Assert.AreEqual(9, projects.Count, "expecting the 9 projects");
+      Assert.True(projects.All(x => !string.IsNullOrEmpty(x.Project.Name)));
+      Assert.True(projects.All(x => x.Project.CreatedAt > new DateTime(2000, 1, 1)));
     }
   }
 }
