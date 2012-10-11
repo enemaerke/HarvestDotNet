@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -31,9 +30,9 @@ namespace HarvestDotNet
       m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", GetBasicAuthenticationToken());
     }
 
-    public Task<Project> GetProjectById(int projectID)
+    public Task<ProjectInfo> GetProjectById(int projectID)
     {
-      return Request<Project>("/projects/{0}".ToFormat(projectID));
+      return Request<ProjectInfo>("/projects/{0}".ToFormat(projectID));
     }
     public Task<List<ProjectInfo>> GetProjects()
     {
@@ -74,7 +73,7 @@ namespace HarvestDotNet
         .Unwrap();
     }
 
-    private void RaiseThrottleExceptionIfNeeded(Task<HttpResponseMessage> task)
+    private static void RaiseThrottleExceptionIfNeeded(Task<HttpResponseMessage> task)
     {
       if (task.Result.StatusCode == HttpStatusCode.ServiceUnavailable)
             throw new HarvestThrottleException("Throttle limit reached");

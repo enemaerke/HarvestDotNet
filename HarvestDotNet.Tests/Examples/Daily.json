@@ -1,0 +1,137 @@
+{
+   "day_entries": [ { "project_id": "2150778",
+ "project": "Contorso Analytics",
+ "user_id": 105174,
+ "spent_at": "2012-10-09",
+ "task_id": "1364878",
+ "task": "Shared software development",
+ "client": "Acme Bank",
+ "id": 113010867,
+ "notes": "Javascript development",
+ "created_at": "2012-10-09T19:19:18Z",
+ "updated_at": "2012-10-09T19:19:18Z",
+ 
+ "hours_without_timer": 0.0,
+ "hours": 0.00}
+],
+   "projects": [{
+"name": "Contorso 350 (Timebasis)",
+"code": "",
+"id": 501063,
+"tasks": [{"name": "Development", "billable": true, "id": 399177}, {"name": "Project Management", "billable": true, "id": 397581}],
+"client": "Ametek",
+"client_id": 204280,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "TouchImage",
+"code": "",
+"id": 2330515,
+"tasks": [{"name": "Development", "billable": true, "id": 399177}],
+"client": "Contex",
+"client_id": 223148,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "Service Cloud",
+"code": "",
+"id": 2052750,
+"tasks": [{"name": "Admin", "billable": false, "id": 397580}, {"name": "Development", "billable": true, "id": 399177}, {"name": "Project Management", "billable": true, "id": 397581}],
+"client": "Dansk Varmepumpe Industri",
+"client_id": 980269,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "Contorso Analytics",
+"code": "",
+"id": 501036,
+"tasks": [{"name": "Admin", "billable": false, "id": 397580}, {"name": "Development", "billable": false, "id": 399177}, {"name": "Project Management", "billable": false, "id": 397581}],
+"client": "Contorso",
+"client_id": 222033,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "Contorso Profiler",
+"code": "",
+"id": 541768,
+"tasks": [{"name": "Admin", "billable": false, "id": 397580}, {"name": "Development", "billable": false, "id": 399177}, {"name": "Project Management", "billable": false, "id": 397581}],
+"client": "Contorso",
+"client_id": 222033,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "Intern",
+"code": "",
+"id": 541794,
+"tasks": [{"name": "Development", "billable": false, "id": 399177}, {"name": "Diverse", "billable": false, "id": 431993}, {"name": "Markedsf\u00f8ring", "billable": false, "id": 429028}, {"name": "Project Management", "billable": false, "id": 397581}, {"name": "Salg", "billable": false, "id": 429027}, {"name": "Support", "billable": false, "id": 432873}],
+"client": "Contorso",
+"client_id": 222033,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "Contorso Analytics - consultancy",
+"code": "",
+"id": 1474159,
+"tasks": [{"name": "Business Development", "billable": true, "id": 397582}, {"name": "Support", "billable": true, "id": 432873}],
+"client": "HIMSA",
+"client_id": 676181,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "Kettle management",
+"code": "",
+"id": 500975,
+"tasks": [{"name": "Admin", "billable": true, "id": 397580}, {"name": "Development", "billable": true, "id": 399177}, {"name": "Project Management", "billable": true, "id": 397581}, {"name": "Requirements specification", "billable": true, "id": 535278}, {"name": "Test", "billable": true, "id": 628920}],
+"client": "J\u00f8ni Foodline",
+"client_id": 204255,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "Contorso Analytics / KIMD Care",
+"code": "",
+"id": 2358898,
+"tasks": [{"name": "Admin", "billable": false, "id": 397580}, {"name": "Development", "billable": false, "id": 399177}, {"name": "Project Management", "billable": false, "id": 397581}],
+"client": "KIMD",
+"client_id": 1121233,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "Intern",
+"code": "",
+"id": 501060,
+"tasks": [{"name": "Admin", "billable": false, "id": 397580}, {"name": "Diverse", "billable": false, "id": 431993}, {"name": "Fakturerbart tror jeg - men hvordan?", "billable": false, "id": 431037}, {"name": "Ferie", "billable": false, "id": 400569}, {"name": "Fri", "billable": false, "id": 431041}, {"name": "Markedsf\u00f8ring", "billable": false, "id": 429028}, {"name": "Project Management", "billable": false, "id": 397581}, {"name": "Salg", "billable": false, "id": 429027}, {"name": "Sygdom", "billable": false, "id": 400568}, {"name": "Transport", "billable": false, "id": 431036}, {"name": "Uddannelse", "billable": false, "id": 431061}],
+"client": "Linkage",
+"client_id": 203459,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "WPF assistance",
+"code": "",
+"id": 1838870,
+"tasks": [{"name": "Admin", "billable": false, "id": 397580}, {"name": "Development", "billable": true, "id": 399177}, {"name": "Project Management", "billable": true, "id": 397581}, {"name": "Technology sparring", "billable": true, "id": 650279}],
+"client": "Radiometer",
+"client_id": 223145,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+,
+{
+"name": "Contorso Analytics",
+"code": "",
+"id": 2150778,
+"tasks": [{"name": "Custom software development", "billable": true, "id": 1364876}, {"name": "Senior business consultancy", "billable": true, "id": 1364871}, {"name": "Shared software development", "billable": true, "id": 1364878}, {"name": "Technical consultancy", "billable": true, "id": 1364879}],
+"client": "Acme Bank",
+"client_id": 892811,
+"client_currency": "Danish Krone - DKK",
+"client_currency_symbol": "kr. "}
+],
+   "for_day": "2012-10-09"}

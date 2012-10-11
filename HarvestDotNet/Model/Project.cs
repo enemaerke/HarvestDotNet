@@ -14,11 +14,15 @@ namespace HarvestDotNet.Model
     public DateTime CreatedAt { get; set; }
     [JsonProperty(PropertyName = "latest_record_at")]
     public DateTime LatestRecordAt { get; set; }
-  }
-
-  public class ProjectInfo
-  {
-    [JsonProperty(PropertyName = "project")]
-    public Project Project { get; set; }
+    [JsonProperty(PropertyName = "earlisest_record_at")]
+    public DateTime EarliestRecordAt { get; set; }
+    [JsonProperty(PropertyName = "updated_at")]
+    public DateTime UpdatedAt { get; set; }
+    [JsonProperty(PropertyName = "client_id")]
+    public int ClientID { get; set; }
+    [JsonProperty(PropertyName = "id")]
+    public int ID { get; set; }
+    [JsonProperty(PropertyName = "notes")]
+    public string Note { get; set; }
   }
 }

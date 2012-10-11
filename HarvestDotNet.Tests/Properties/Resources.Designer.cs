@@ -69,5 +69,25 @@ namespace HarvestDotNet.Tests.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] Daily {
+            get {
+                object obj = ResourceManager.GetObject("Daily", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] SingleProject {
+            get {
+                object obj = ResourceManager.GetObject("SingleProject", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

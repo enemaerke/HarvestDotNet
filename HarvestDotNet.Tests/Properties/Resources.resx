@@ -121,4 +121,10 @@
   <data name="AllProjects" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Examples\AllProjects.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Daily" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Examples\Daily.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SingleProject" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Examples\SingleProject.json;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

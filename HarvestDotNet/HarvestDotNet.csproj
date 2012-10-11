@@ -63,6 +63,7 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="HarvestAPI.cs" />
     <Compile Include="Model\Project.cs" />
+    <Compile Include="Model\ProjectInfo.cs" />
     <Compile Include="ObjectResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

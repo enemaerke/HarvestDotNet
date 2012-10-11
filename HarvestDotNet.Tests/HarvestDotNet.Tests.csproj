@@ -64,6 +64,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Examples\AllProjects.json" />
+    <None Include="Examples\Daily.json" />
+    <None Include="Examples\SingleProject.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

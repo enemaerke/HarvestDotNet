@@ -1,66 +1,67 @@
 ﻿using System;
-using System.Xml.Serialization;
+using Newtonsoft.Json;
 
 namespace HarvestDotNet.Model
 {
-  [XmlRoot("day_entry")]
   public class DayEntry
   {
-    [XmlElement("id")]
+    [JsonProperty("id")]
     public int Id { get; set; }
-    [XmlElement("spent_at", DataType = "date")]
+    [JsonProperty("spent_at")]
     public DateTime SpentAt { get; set; }
-    [XmlElement("user_id")]
+    [JsonProperty("user_id")]
     public int UserId { get; set; }
-    [XmlElement("project_id")]
+    [JsonProperty("project_id")]
     public int ProjectId { get; set; }
-    [XmlElement("project")]
+    [JsonProperty("project")]
     public string Project { get; set; }
-    [XmlElement("client")]
+    [JsonProperty("client")]
     public string Client { get; set; }
-    [XmlElement("task_id")]
+    [JsonProperty("task_id")]
     public string TaskId { get; set; }
-    [XmlElement("task")]
+    [JsonProperty("task")]
     public string Task { get; set; }
-    [XmlElement("hours", DataType = "float")]
+    [JsonProperty("hours")]
     public float Hours { get; set; }
-    [XmlElement("notes")]
+    [JsonProperty("notes")]
     public string Notes { get; set; }
-
-    [XmlElement("timer_started_at", IsNullable = true)]
-    public string _innerTimerStarted
-    {
-      get { return TimerStarted == null ? null : ObjectResolver.ToXmlDateTimeLong(TimerStarted.Value); }
-      set { TimerStarted = value == null ? (DateTime?)null : ObjectResolver.ParseXmlDateTimeLong(value); }
-    }
-    
-    [XmlIgnore]
-    public DateTime? TimerStarted { get; set; }
+    [JsonProperty("timer_started_at")]
+    public DateTime? TimerStartedAt { get; set; }
+    [JsonProperty("created_at")]
+    public DateTime CreatedAt { get; set; }
+    [JsonProperty("updated_at")]
+    public DateTime UpdatedAt { get; set; }
   }
 
-  [XmlRoot("daily")]
   public class DayInformation
   {
-    [XmlElement("for_day")]
-    public string _forDay
-    {
-      get { return ObjectResolver.ToXmlDateTimeShort(Day); }
-      set { Day = ObjectResolver.ParseXmlDateTimeShort(value); }
-    }
-
-    [XmlIgnore]
+    [JsonProperty("for_day")]
     public DateTime Day { get; set; }
-
-    [XmlArray("day_entries")]
-    [XmlArrayItem(ElementName = "day_entry", Type = typeof(DayEntry))]
+    [JsonProperty("day_entries")]
     public DayEntry[] DayEntries { get; set; }
+    [JsonProperty("projects")]
+    public ProjectEntry[] ProjectEntries { get; set; }
   }
 
-  [XmlRoot("day_entries", IsNullable = false)]
-  public class DayEntries
+  public class ProjectEntry
   {
-    [XmlArray("day_entries")]
-    [XmlArrayItem(ElementName = "day_entry", Type = typeof(DayEntry))]
-    public DayEntry[] Entries { get; set; }
+    [JsonProperty("name")]
+    public string Name { get; set; }
+    [JsonProperty("id")]
+    public int ID { get; set; }
+    [JsonProperty("client")]
+    public string Client { get; set; }
+    [JsonProperty("client_id")]
+    public string ClientID { get; set; }
+    [JsonProperty("tasks")]
+    public TaskEntry[] Tasks { get; set; }
+  }
+
+  public class TaskEntry
+  {
+    [JsonProperty("id")]
+    public int ID { get; set; }
+    [JsonProperty("name")]
+    public string Name { get; set; }
   }
 }

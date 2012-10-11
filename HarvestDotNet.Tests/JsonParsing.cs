@@ -22,5 +22,27 @@ namespace HarvestDotNet.Tests
       Assert.True(projects.All(x => !string.IsNullOrEmpty(x.Project.Name)));
       Assert.True(projects.All(x => x.Project.CreatedAt > new DateTime(2000,1,1)));
     }
+
+    [Test]
+    public void CanParseSingleProject()
+    {
+      byte[] data = Properties.Resources.SingleProject;
+      var info = JsonConvert.DeserializeObject<ProjectInfo>(Encoding.UTF8.GetString(data));
+
+      Assert.True(info.Project.Active);
+      Assert.True(!string.IsNullOrEmpty(info.Project.Name));
+      Assert.True(info.Project.CreatedAt > new DateTime(2000, 1, 1));
+    }
+
+    [Test]
+    public void CanParseDaily()
+    {
+      byte[] data = Properties.Resources.Daily;
+      var dayInformation = JsonConvert.DeserializeObject<DayInformation>(Encoding.UTF8.GetString(data));
+
+      Assert.True(dayInformation.Day > new DateTime(2000, 1, 1));
+      Assert.AreEqual(12, dayInformation.ProjectEntries.Length );
+      Assert.AreEqual(1, dayInformation.DayEntries.Length);
+    }
   }
 }
