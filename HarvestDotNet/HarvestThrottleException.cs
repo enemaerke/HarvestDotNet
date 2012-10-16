@@ -3,6 +3,9 @@ using System.Runtime.Serialization;
 
 namespace HarvestDotNet
 {
+  /// <summary>
+  /// Exception signalling that the throttle limit for the Harvest API has been reached
+  /// </summary>
   [Serializable]
   public class HarvestThrottleException : Exception
   {

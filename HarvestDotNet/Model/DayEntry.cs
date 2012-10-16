@@ -32,36 +32,4 @@ namespace HarvestDotNet.Model
     [JsonProperty("updated_at")]
     public DateTime UpdatedAt { get; set; }
   }
-
-  public class DayInformation
-  {
-    [JsonProperty("for_day")]
-    public DateTime Day { get; set; }
-    [JsonProperty("day_entries")]
-    public DayEntry[] DayEntries { get; set; }
-    [JsonProperty("projects")]
-    public ProjectEntry[] ProjectEntries { get; set; }
-  }
-
-  public class ProjectEntry
-  {
-    [JsonProperty("name")]
-    public string Name { get; set; }
-    [JsonProperty("id")]
-    public int ID { get; set; }
-    [JsonProperty("client")]
-    public string Client { get; set; }
-    [JsonProperty("client_id")]
-    public string ClientID { get; set; }
-    [JsonProperty("tasks")]
-    public TaskEntry[] Tasks { get; set; }
-  }
-
-  public class TaskEntry
-  {
-    [JsonProperty("id")]
-    public int ID { get; set; }
-    [JsonProperty("name")]
-    public string Name { get; set; }
-  }
 }
