@@ -2,10 +2,17 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended" mc:Ignorable="d" 
-             Width="700" Height="600"
-             d:DesignHeight="300" d:DesignWidth="300">
-  <Grid Background="SkyBlue">
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended" 
+             xmlns:PropertyGrid="clr-namespace:Xceed.Wpf.Toolkit.PropertyGrid;assembly=WPFToolkit.Extended" 
+             xmlns:TestApp="clr-namespace:HarvestDotNet.TestApp"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             Width="700" Height="500">
+  <Grid Background="SkyBlue" HorizontalAlignment="Stretch">
+    <Grid.Resources>
+      <TestApp:TypeToStringConverter x:Key="typeToStringConverter" />
+    </Grid.Resources>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="*" />
       <ColumnDefinition Width="*" />
@@ -55,19 +62,36 @@
 
           <TextBlock Text="Number" VerticalAlignment="Center" Grid.Row="1"/>
           <Toolkit:IntegerUpDown Value="{Binding SelectedNumber, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" MinWidth="80" />
-          <DatePicker SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" Margin="0,5,0,5" MinWidth="200"/>
+
+          <TextBlock Text="Properties" VerticalAlignment="Top" Grid.Row="2"/>
+          <TabControl ItemsSource="{Binding Properties}" Grid.Row="3" Grid.ColumnSpan="2" x:Name="tabs"
+                      SelectedIndex="{Binding SelectedPropertyIndex, Mode=TwoWay}">
+            <TabControl.ItemTemplate>
+              <DataTemplate>
+                <TextBlock Text="{Binding ., Converter={StaticResource typeToStringConverter}}" />
+              </DataTemplate>
+            </TabControl.ItemTemplate>
+            <TabControl.ContentTemplate>
+              <DataTemplate>
+                <PropertyGrid:PropertyGrid SelectedObject="{Binding .}" ShowSearchBox="False" ShowAdvancedOptions="False" ShowSortOptions="False"
+                                           ShowSummary="False"/>
+              </DataTemplate>
+            </TabControl.ContentTemplate>
+          </TabControl>
 
         </Grid>
 
       </Border>
 
       <Border Grid.Row="4" Grid.ColumnSpan="2" Margin="4,8,4,8" CornerRadius="3" Background="DarkBlue">
-        <StackPanel>
+        <StackPanel MaxWidth="300" >
         <Button x:Name="GetProjects" Content="Get Projects"/>
         <Button x:Name="GetSpecificProject" Content="Get Project by number"/>
           <Button x:Name="GetToday" Content="Get today"/>
           <Button x:Name="GetDayEntry" Content="Get day "/>
           <Button x:Name="GetSpecificDayEntry" Content="Get day entry by id"/>
+          <Button x:Name="ToggleTimer" Content="Toggling timer"/>
+          <Button x:Name="GetAccountStatus" Content="Account status"/>
         </StackPanel>
       </Border>
     </Grid>

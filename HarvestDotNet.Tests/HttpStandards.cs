@@ -72,10 +72,10 @@ namespace HarvestDotNet.Tests
         var count = projectsTask.Result.Count;
         Assert.Fail("should have failed at this point");
       }
-        catch(HarvestThrottleException he)
-        {
-          
-        }
+      catch(HarvestThrottleException)
+      {
+        Console.WriteLine("Throttle exception thrown");
+      }
       catch (AggregateException ae)
       {
         Assert.True(ae.InnerExceptions.Any(x => x is HarvestThrottleException), "expecting a throttle exception");

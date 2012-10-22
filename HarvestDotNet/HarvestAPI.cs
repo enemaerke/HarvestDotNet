@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,7 @@ namespace HarvestDotNet
   {
     private readonly HttpClient m_client;
     private readonly HarvestApiSettings m_settings;
+    private MediaTypeFormatter m_formatter;
 
     private string GetBasicAuthenticationToken()
     {
@@ -28,6 +30,7 @@ namespace HarvestDotNet
 
       m_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
       m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", GetBasicAuthenticationToken());
+      m_formatter = new JsonMediaTypeFormatter();
     }
 
     public Task<ProjectInfo> GetProjectById(int projectID)
@@ -59,6 +62,16 @@ namespace HarvestDotNet
       return Request<DayEntry>("/daily/timer/{0}".ToFormat(dayEntryId));
     }
 
+    public Task<AccountRateStatus> GetAccountRateStatus()
+    {
+      return Request<AccountRateStatus>("/account/rate_limit_status");
+    }
+
+    public Task<DayEntry> CreateDayEntry(DayEntryBrief entryBrief)
+    {
+      return Post<DayEntry, DayEntryBrief>("/day/add", entryBrief);
+    }
+
     private Task<T> Request<T>(string relativePath) where T:class
     {
       Uri completeUri = new Uri(m_settings.BaseUri, relativePath);
@@ -72,6 +85,21 @@ namespace HarvestDotNet
                         })
         .Unwrap();
     }
+
+    private Task<TReply> Post<TReply,TData>(string relativePath, TData data) where TReply : class where TData : class
+    {
+      Uri completeUri = new Uri(m_settings.BaseUri, relativePath);
+      return m_client.PostAsync(completeUri.ToString(), data, m_formatter)
+        .ContinueWith(t =>
+        {
+          RaiseThrottleExceptionIfNeeded(t);
+          t.Result.EnsureSuccessStatusCode();
+
+          return t.Result.Content.ReadAsAsync<TReply>();
+        })
+        .Unwrap();
+    }
+
 
     private static void RaiseThrottleExceptionIfNeeded(Task<HttpResponseMessage> task)
     {

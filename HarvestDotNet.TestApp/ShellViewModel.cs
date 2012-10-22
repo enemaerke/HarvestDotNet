@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Caliburn.Micro;
 using HarvestDotNet.Model;
 using Newtonsoft.Json;
+using Action = Caliburn.Micro.Action;
 
 namespace HarvestDotNet.TestApp
 {
@@ -19,7 +21,21 @@ namespace HarvestDotNet.TestApp
       UserName = new RegistryProperty<string>(RegistryPath, "UserName", "", s => s, s => s);
       Password = new RegistryProperty<string>(RegistryPath, "Password", "", s => s, s => s);
       SelectedDate = DateTime.Now;
+
+      DayEntryBriefInstance = new DayEntryBrief();
+      TaskEntryInstance = new TaskEntry();
+      Properties = new object[]
+      {
+        DayEntryBriefInstance,
+        TaskEntryInstance
+      };
+      SelectedPropertyIndex = 0;
+
     }
+
+    public int SelectedPropertyIndex { get; set; }
+
+    public object[] Properties { get; private set; }
 
     private DateTime m_selectedDate;
     public DateTime SelectedDate
@@ -34,6 +50,9 @@ namespace HarvestDotNet.TestApp
       get { return m_selectedNumber; }
       set { m_selectedNumber = value; NotifyOfPropertyChange(() => SelectedNumber); }
     }
+
+    public DayEntryBrief DayEntryBriefInstance { get; set; }
+    public TaskEntry TaskEntryInstance { get; set; }
 
     private string m_outputAsJson;
     public string OutputAsJson
@@ -54,42 +73,52 @@ namespace HarvestDotNet.TestApp
 
     public void GetProjects()
     {
-      HarvestApiSettings settings = GetSettings();
-      HarvestApi api = new HarvestApi(settings);
-      var projects = api.GetProjects();
-      Output(projects.Result);
+      Do(api => api.GetProjects());
     }
 
     public void GetSpecificProject()
     {
-      var settings = GetSettings();
-      HarvestApi api = new HarvestApi(settings);
-      var project = api.GetProjectById(SelectedNumber);
-      Output(project.Result);
+      Do(api =>api.GetProjectById(SelectedNumber));
     }
 
     public void GetToday()
     {
-      var settings = GetSettings();
-      HarvestApi api = new HarvestApi(settings);
-      var entry = api.GetDay();
-      Output(entry.Result);
+      Do(api => api.GetDay());
     }
 
     public void GetDayEntry()
     {
-      var settings = GetSettings();
-      HarvestApi api = new HarvestApi(settings);
-      var entry = api.GetDay(SelectedDate);
-      Output(entry.Result);
+      Do(api =>api.GetDay(SelectedDate));
     }
 
     public void GetSpecificDayEntry()
     {
-      var settings = GetSettings();
-      HarvestApi api = new HarvestApi(settings);
-      var entry = api.GetDay(SelectedNumber);
-      Output(entry.Result);      
+      Do(api =>api.GetDay(SelectedNumber));
+    }
+
+    public void ToggleTimer()
+    {
+      Do(api => api.ToggleTimer(SelectedNumber));
+    }
+
+    public void GetAccountStatus()
+    {
+      Do(api => api.GetAccountRateStatus());
+    }
+
+    private void Do<TOutput>(Func<HarvestApi,Task<TOutput>> action)
+    {
+      try
+      {
+        var settings = GetSettings();
+        HarvestApi api = new HarvestApi(settings);
+        var result = action(api);
+        Output(result.Result); 
+      }
+      catch(Exception exception)
+      {
+        OutputAsJson = exception.Message + Environment.NewLine + exception.StackTrace;
+      }
     }
 
     private void Output(object result)

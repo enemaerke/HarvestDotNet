@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -22,6 +23,21 @@ namespace HarvestDotNet.TestApp
     public ShellView()
     {
       InitializeComponent();
+    }
+  }
+
+  public class TypeToStringConverter : IValueConverter
+  {
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+      if (null == value)
+        return "null";
+      return value.GetType().Name;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+      return DependencyProperty.UnsetValue;
     }
   }
 }
