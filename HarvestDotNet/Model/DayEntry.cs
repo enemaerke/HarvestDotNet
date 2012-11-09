@@ -27,8 +27,8 @@ namespace HarvestDotNet.Model
   {
     [JsonProperty("notes")]
     public string Notes { get; set; }
-    [JsonProperty("hours")]
-    public float Hours { get; set; }
+    [JsonProperty("hours", NullValueHandling = NullValueHandling.Ignore)]
+    public float? Hours { get; set; }
     [JsonProperty("project_id")]
     public int ProjectId { get; set; }
     [JsonProperty("task_id")]

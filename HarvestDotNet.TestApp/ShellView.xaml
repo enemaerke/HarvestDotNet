@@ -8,7 +8,7 @@
              xmlns:TestApp="clr-namespace:HarvestDotNet.TestApp"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
-             Width="700" Height="500">
+             Width="700"  MaxHeight="700">
   <Grid Background="SkyBlue" HorizontalAlignment="Stretch">
     <Grid.Resources>
       <TestApp:TypeToStringConverter x:Key="typeToStringConverter" />
@@ -73,7 +73,7 @@
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
               <DataTemplate>
-                <PropertyGrid:PropertyGrid SelectedObject="{Binding .}" ShowSearchBox="False" ShowAdvancedOptions="False" ShowSortOptions="False"
+                <PropertyGrid:PropertyGrid SelectedObject="{Binding .}" ShowSearchBox="False" ShowAdvancedOptions="False" ShowSortOptions="True"
                                            ShowSummary="False"/>
               </DataTemplate>
             </TabControl.ContentTemplate>
@@ -92,6 +92,8 @@
           <Button x:Name="GetSpecificDayEntry" Content="Get day entry by id"/>
           <Button x:Name="ToggleTimer" Content="Toggling timer"/>
           <Button x:Name="GetAccountStatus" Content="Account status"/>
+          <Button x:Name="CreateDayEntry" Content="Create day entry" />
+          <Button x:Name="DeleteDayEntry" Content="Delete day entry" />
         </StackPanel>
       </Border>
     </Grid>

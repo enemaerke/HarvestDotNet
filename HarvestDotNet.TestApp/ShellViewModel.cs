@@ -22,7 +22,11 @@ namespace HarvestDotNet.TestApp
       Password = new RegistryProperty<string>(RegistryPath, "Password", "", s => s, s => s);
       SelectedDate = DateTime.Now;
 
-      DayEntryBriefInstance = new DayEntryBrief();
+      DayEntryBriefInstance = new DayEntryBrief()
+                                {
+                                  SpentAt = DateTime.Now,
+                                  Notes = string.Empty,
+                                };
       TaskEntryInstance = new TaskEntry();
       Properties = new object[]
       {
@@ -58,7 +62,7 @@ namespace HarvestDotNet.TestApp
     public string OutputAsJson
     {
       get { return m_outputAsJson; }
-      set { m_outputAsJson = value; NotifyOfPropertyChange(()=> OutputAsJson); }
+      set { m_outputAsJson = value; NotifyOfPropertyChange(() => OutputAsJson); }
     }
 
     private HarvestApiSettings GetSettings()
@@ -78,7 +82,7 @@ namespace HarvestDotNet.TestApp
 
     public void GetSpecificProject()
     {
-      Do(api =>api.GetProjectById(SelectedNumber));
+      Do(api => api.GetProjectById(SelectedNumber));
     }
 
     public void GetToday()
@@ -88,12 +92,12 @@ namespace HarvestDotNet.TestApp
 
     public void GetDayEntry()
     {
-      Do(api =>api.GetDay(SelectedDate));
+      Do(api => api.GetDay(SelectedDate));
     }
 
     public void GetSpecificDayEntry()
     {
-      Do(api =>api.GetDay(SelectedNumber));
+      Do(api => api.GetDay(SelectedNumber));
     }
 
     public void ToggleTimer()
@@ -106,16 +110,26 @@ namespace HarvestDotNet.TestApp
       Do(api => api.GetAccountRateStatus());
     }
 
-    private void Do<TOutput>(Func<HarvestApi,Task<TOutput>> action)
+    public void CreateDayEntry()
+    {
+      Do(api => api.CreateDayEntry(DayEntryBriefInstance));
+    }
+
+    public void DeleteDayEntry()
+    {
+      Do(api => api.DeleteDayEntry(SelectedNumber));
+    }
+
+    private void Do<TOutput>(Func<HarvestApi, Task<TOutput>> action)
     {
       try
       {
         var settings = GetSettings();
         HarvestApi api = new HarvestApi(settings);
         var result = action(api);
-        Output(result.Result); 
+        Output(result.Result);
       }
-      catch(Exception exception)
+      catch (Exception exception)
       {
         OutputAsJson = exception.Message + Environment.NewLine + exception.StackTrace;
       }
