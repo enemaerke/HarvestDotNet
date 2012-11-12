@@ -12,7 +12,7 @@ namespace HarvestDotNet.Tests
     [Test]
     public void CanReadProjects()
     {
-      HarvestApi api = GetStandardApi();
+      ProjectsApi api = new ProjectsApi(GetSettings());
       var projectsTask = api.GetProjects();
       using(var req = HttpServer.HandleRequest())
       {

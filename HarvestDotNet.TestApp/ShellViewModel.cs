@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.Threading.Tasks;
 using Caliburn.Micro;
 using HarvestDotNet.Model;
 using Newtonsoft.Json;
-using Action = Caliburn.Micro.Action;
 
 namespace HarvestDotNet.TestApp
 {
+  [Export(typeof(ShellViewModel))]
   public class ShellViewModel : PropertyChangedBase
   {
     private const string RegistryPath = @"SOFTWARE\HarvestDotNet\TestApp";
@@ -34,12 +36,19 @@ namespace HarvestDotNet.TestApp
         TaskEntryInstance
       };
       SelectedPropertyIndex = 0;
-
+      IsBusy = false;
     }
 
     public int SelectedPropertyIndex { get; set; }
 
     public object[] Properties { get; private set; }
+
+    private bool m_isBusy;
+    public bool IsBusy
+    {
+      get { return m_isBusy; }
+      set { m_isBusy = value; NotifyOfPropertyChange(() => IsBusy); }
+    }
 
     private DateTime m_selectedDate;
     public DateTime SelectedDate
@@ -77,55 +86,60 @@ namespace HarvestDotNet.TestApp
 
     public void GetProjects()
     {
-      Do(api => api.GetProjects());
+      Do<ProjectsApi,List<ProjectInfo>>(api => api.GetProjects());
     }
 
     public void GetSpecificProject()
     {
-      Do(api => api.GetProjectById(SelectedNumber));
+      Do<ProjectsApi, ProjectInfo>(api => api.GetProjectById(SelectedNumber));
     }
 
     public void GetToday()
     {
-      Do(api => api.GetDay());
+      Do<TimeTrackingApi, DayInformation>(api => api.GetDay());
     }
 
     public void GetDayEntry()
     {
-      Do(api => api.GetDay(SelectedDate));
+      Do<TimeTrackingApi, DayInformation>(api => api.GetDay(SelectedDate));
     }
 
     public void GetSpecificDayEntry()
     {
-      Do(api => api.GetDay(SelectedNumber));
+      Do<TimeTrackingApi, DayEntry>(api => api.GetDay(SelectedNumber));
     }
 
     public void ToggleTimer()
     {
-      Do(api => api.ToggleTimer(SelectedNumber));
+      Do<TimeTrackingApi, DayEntry>(api => api.ToggleTimer(SelectedNumber));
     }
 
     public void GetAccountStatus()
     {
-      Do(api => api.GetAccountRateStatus());
+      Do<AccountApi, AccountRateStatus>(api => api.GetAccountRateStatus());
+    }
+    public void WhoAmI()
+    {
+      Do<AccountApi, AccountRateStatus>(api => api.WhoAmI());
     }
 
     public void CreateDayEntry()
     {
-      Do(api => api.CreateDayEntry(DayEntryBriefInstance));
+      Do<TimeTrackingApi, DayEntry>(api => api.CreateDayEntry(DayEntryBriefInstance));
     }
 
     public void DeleteDayEntry()
     {
-      Do(api => api.DeleteDayEntry(SelectedNumber));
+      Do<TimeTrackingApi, bool>(api => api.DeleteDayEntry(SelectedNumber));
     }
 
-    private void Do<TOutput>(Func<HarvestApi, Task<TOutput>> action)
+    private void Do<TApiType, TOutput>(Func<TApiType, Task<TOutput>> action) where TApiType : class
     {
       try
       {
+        IsBusy = true;
         var settings = GetSettings();
-        HarvestApi api = new HarvestApi(settings);
+        TApiType api = Activator.CreateInstance(typeof (TApiType), settings) as TApiType;
         var result = action(api);
         Output(result.Result);
       }
@@ -133,13 +147,16 @@ namespace HarvestDotNet.TestApp
       {
         OutputAsJson = exception.Message + Environment.NewLine + exception.StackTrace;
       }
+      finally
+      {
+        IsBusy = false;
+      }
     }
 
     private void Output(object result)
     {
       string asJson = JsonConvert.SerializeObject(result, Formatting.Indented);
       OutputAsJson = asJson;
-
     }
   }
 }

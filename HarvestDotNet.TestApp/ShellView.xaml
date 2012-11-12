@@ -12,13 +12,14 @@
   <Grid Background="SkyBlue" HorizontalAlignment="Stretch">
     <Grid.Resources>
       <TestApp:TypeToStringConverter x:Key="typeToStringConverter" />
+      <TestApp:BooleanInverter x:Key="boolInverter" />
     </Grid.Resources>
     <Grid.ColumnDefinitions>
       <ColumnDefinition Width="*" />
       <ColumnDefinition Width="*" />
     </Grid.ColumnDefinitions>
 
-    <Grid Margin="4">
+    <Grid Margin="4" IsEnabled="{Binding IsBusy, Converter={StaticResource boolInverter}}" >
       <Grid.RowDefinitions>
         <RowDefinition Height="Auto" />
         <RowDefinition Height="Auto" />
@@ -36,7 +37,7 @@
       <TextBox Text="{Binding BaseUri.Value, Mode=TwoWay}"  Grid.Column="1" Margin="0,5,0,5" MinWidth="250"/>
 
       <TextBlock Text="UserName" VerticalAlignment="Center" Grid.Row="1"/>
-      <TextBox Text="{Binding UserName.Value, Mode=TwoWay}"  Grid.Column="1" Grid.Row="1" Margin="0,5,0,5" MinWidth="250"/>
+      <TextBox Text="{Binding UserName.Value, Mode=TwoWay}"  Grid.Column="1" Grid.Row="1" Margin="0,5,0,5" MinWidth="250" IsEnabled="{Binding IsBusy, Converter={StaticResource boolInverter}}"/>
 
       <TextBlock Text="Password" VerticalAlignment="Center" Grid.Row="2"/>
       <TextBox Text="{Binding Password.Value, Mode=TwoWay}"  Grid.Column="1" Grid.Row="2" Margin="0,5,0,5" MinWidth="250"/>
@@ -92,6 +93,7 @@
           <Button x:Name="GetSpecificDayEntry" Content="Get day entry by id"/>
           <Button x:Name="ToggleTimer" Content="Toggling timer"/>
           <Button x:Name="GetAccountStatus" Content="Account status"/>
+          <Button x:Name="WhoAmI" Content="Who am I"/>
           <Button x:Name="CreateDayEntry" Content="Create day entry" />
           <Button x:Name="DeleteDayEntry" Content="Delete day entry" />
         </StackPanel>

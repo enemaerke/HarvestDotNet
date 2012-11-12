@@ -19,17 +19,17 @@ namespace HarvestDotNet.Tests
       if (HttpServer != null)
         HttpServer.Dispose();
     }
-
-    protected HarvestApi GetStandardApi()
+    
+    protected HarvestApiSettings GetSettings()
     {
       var settings = new HarvestApiSettings()
-                       {
-                         BaseUri = HttpServer.BaseUri,
-                         Password = "password",
-                         UserName = "username",
-                       };
-      var api = new HarvestApi(settings);
-      return api;
+      {
+        BaseUri = HttpServer.BaseUri,
+        Password = "password",
+        UserName = "username",
+      };
+
+      return settings;
     }
   }
 }

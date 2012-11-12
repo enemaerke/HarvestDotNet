@@ -19,7 +19,7 @@ namespace HarvestDotNet.Tests
                          Password = "MyPassword",
                          UserName = "MyUser"
                        };
-      HarvestApi api = new HarvestApi(settings);
+      ProjectsApi api = new ProjectsApi(settings);
 
       var projectsTask = api.GetProjects();
       using(var req = HttpServer.HandleRequest(verbose:true))
@@ -38,7 +38,7 @@ namespace HarvestDotNet.Tests
         Password = "MyPassword",
         UserName = "MyUser"
       };
-      HarvestApi api = new HarvestApi(settings);
+      var api = new ProjectsApi(settings);
 
       var projectsTask = api.GetProjects();
       using (var req = HttpServer.HandleRequest(verbose: true))
@@ -57,7 +57,7 @@ namespace HarvestDotNet.Tests
         Password = "MyPassword",
         UserName = "MyUser"
       };
-      HarvestApi api = new HarvestApi(settings);
+      ProjectsApi api = new ProjectsApi(settings);
 
       var projectsTask = api.GetProjects();
       using (var req = HttpServer.HandleRequest(verbose: true))
