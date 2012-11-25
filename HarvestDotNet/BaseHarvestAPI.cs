@@ -90,7 +90,9 @@ namespace HarvestDotNet
       if (task.Result.StatusCode == HttpStatusCode.ServiceUnavailable)
       {
         //try read the "Retry-After" header to look for the number of seconds to wait for throttle to be lifted
-        throw new HarvestThrottleException("Throttle limit reached", task.Result.Headers.RetryAfter.Delta);
+        if (task.Result.Headers.RetryAfter != null)
+            throw new HarvestThrottleException("Throttle limit reached", task.Result.Headers.RetryAfter.Delta);
+        throw new HarvestThrottleException("Throttle limit reached");
       }
     }
   }

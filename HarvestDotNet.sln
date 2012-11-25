@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestDotNet", "HarvestDotNet\HarvestDotNet.csproj", "{6B02A125-E586-4196-B633-5345254B831A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestDotNet.Tests", "HarvestDotNet.Tests\HarvestDotNet.Tests.csproj", "{F4C81FEA-FD9D-4583-B22F-9C5BB10B6448}"
@@ -13,6 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9595DA
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HarvestDotNet.TestApp", "HarvestDotNet.TestApp\HarvestDotNet.TestApp.csproj", "{AF9EC9E3-BB5F-47B1-A98E-CDE9C3AEE1C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Items", "Items", "{0E4E4270-11D1-4C2C-8F9E-55B747AB8CED}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
