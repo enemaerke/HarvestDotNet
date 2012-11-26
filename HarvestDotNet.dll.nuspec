@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>HarvestDotNet</id>
+    <version>$version$</version>
+    <authors>Søren Enemærke</authors>
+    <owners>Søren Enemærke</owners>
+    <projectUrl>http://github.com/enemaerke/harvestdotnet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Small library for interacting with the harvest time tracking api</description>
+    <copyright>Copyright 2012</copyright>
+    <tags>.NET TPL HTTP</tags>
+    <dependencies>
+      <dependency id="Microsoft.AspNet.WebApi.Client" version="4.0.20710.0" />
+	  <dependency id="
+    </dependencies>
+  </metadata>
+</package>

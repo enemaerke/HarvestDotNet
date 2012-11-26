@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>enemaerke</authors>
+    <owners>enemaerke</owners>
+    <projectUrl>http://github.com/enemaerke/harvestdotnet</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A simple .net library for acessing the time tracking API of Harvest using TPL</description>
+    <copyright>Copyright 2012</copyright>
+    <tags>Harvest .Net TimeTracking TPL</tags>
+  </metadata>
+</package>
