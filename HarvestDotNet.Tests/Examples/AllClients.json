@@ -1,0 +1,70 @@
+[
+  {
+    "client":{
+      "active":true,
+      "cache_version":62654183,
+      "created_at":"2013-02-07T19:13:30Z",
+      "currency":"United States Dollars - USD",
+      "highrise_id":null,
+      "id":500,
+      "name":"268 Generation",
+      "statement_key":"c2968ffb34ffdadbf7a45015982f4d9c",
+      "updated_at":"2013-02-07T19:13:30Z",
+      "currency_symbol":"$",
+      "details":"",
+      "default_invoice_timeframe":null,
+      "last_invoice_kind":"free_form"
+    }
+  },
+  {
+    "client":{
+      "active":true,
+      "cache_version":3076933358,
+      "created_at":"2013-02-13T15:06:37Z",
+      "currency":"United States Dollars - USD",
+      "highrise_id":null,
+      "id":502,
+      "name":"Accountable2You",
+      "statement_key":"0be84da1141e4232101a8ee6bd7a6e2d",
+      "updated_at":"2013-02-13T15:06:37Z",
+      "currency_symbol":"$",
+      "details":"",
+      "default_invoice_timeframe":"20130201,20130228",
+      "last_invoice_kind":"detailed"
+    }
+  },
+  {
+    "client":{
+      "active":true,
+      "cache_version":403528383,
+      "created_at":"2013-03-29T16:53:19Z",
+      "currency":"United States Dollars - USD",
+      "highrise_id":null,
+      "id":503,
+      "name":"Brand Apart",
+      "statement_key":"d046f1051da74b380f1c1df86c922333",
+      "updated_at":"2013-03-29T16:53:19Z",
+      "currency_symbol":"$",
+      "details":"",
+      "default_invoice_timeframe":null,
+      "last_invoice_kind":null
+    }
+  },
+  {
+    "client":{
+      "active":true,
+      "cache_version":4049288011,
+      "created_at":"2013-02-05T12:44:26Z",
+      "currency":"United States Dollars - USD",
+      "highrise_id":null,
+      "id":504,
+      "name":"Creative Board",
+      "statement_key":"a1c06cb763f9006bbcff8bc7618f1d3c",
+      "updated_at":"2013-02-05T12:44:26Z",
+      "currency_symbol":"$",
+      "details":"",
+      "default_invoice_timeframe":null,
+      "last_invoice_kind":null
+    }
+  }
+]

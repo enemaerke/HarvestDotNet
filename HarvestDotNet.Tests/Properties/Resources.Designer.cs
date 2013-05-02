@@ -69,6 +69,30 @@ namespace HarvestDotNet.Tests.Properties {
                 return ((byte[])(obj));
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] AllInvoices
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("AllInvoices", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] AllClients
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("AllClients", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
@@ -86,6 +110,30 @@ namespace HarvestDotNet.Tests.Properties {
         internal static byte[] SingleProject {
             get {
                 object obj = ResourceManager.GetObject("SingleProject", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] SingleInvoice
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("SingleInvoice", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] SingleClient
+        {
+            get
+            {
+                object obj = ResourceManager.GetObject("SingleClient", resourceCulture);
                 return ((byte[])(obj));
             }
         }

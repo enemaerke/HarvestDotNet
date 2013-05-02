@@ -1,0 +1,32 @@
+{
+    "invoices":{
+      "amount":"6785.0",
+      "client_id":500,
+      "client_key":"26e299b72a472d5be7ffcf3e6d4ce4f804d73722",
+      "created_at":"2013-04-30T17:30:34Z",
+      "created_by_id":445551,
+      "currency":"United States Dollars - USD",
+      "discount":null,
+      "discount_amount":"0.0",
+      "due_amount":"6785.0",
+      "due_at":"2013-05-15",
+      "due_at_human_format":"custom",
+      "estimate_id":null,
+      "id":2731238,
+      "issued_at":"2013-04-30",
+      "notes":"Invoice notes go here",
+      "number":"42",
+      "period_end":"2013-04-30",
+      "period_start":"2013-04-01",
+      "purchase_order":"",
+      "recurring_invoice_id":null,
+      "retainer_id":null,
+      "state":"open",
+      "subject":"",
+      "tax":null,
+      "tax2":null,
+      "tax2_amount":"0.0",
+      "tax_amount":"0.0",
+      "updated_at":"2013-04-30T18:02:58Z"
+    }
+  }

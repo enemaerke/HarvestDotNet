@@ -56,9 +56,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountApi.cs" />
+    <Compile Include="ClientsApi.cs" />
+    <Compile Include="InvoicesApi.cs" />
     <Compile Include="HarvestApiSettings.cs" />
     <Compile Include="HarvestThrottleException.cs" />
     <Compile Include="Model\AccountRateStatus.cs" />
+    <Compile Include="Model\Client.cs" />
+    <Compile Include="Model\ClientInfo.cs" />
+    <Compile Include="Model\InvoiceInfo.cs" />
+    <Compile Include="Model\Invoice.cs" />
     <Compile Include="Model\DayEntry.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="BaseHarvestAPI.cs" />
