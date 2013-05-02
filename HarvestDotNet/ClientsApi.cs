@@ -8,12 +8,12 @@ namespace HarvestDotNet
 {
   public class ClientsApi : HarvestApi
   {
-      public ClientsApi(HarvestApiSettings settings)
+    public ClientsApi(HarvestApiSettings settings)
           : base(settings)
     {
     }
 
-    public Task<ClientInfo> GetClientById(int clientID)
+    public Task<ClientInfo> GetClientById(long clientID)
     {
         return Request<ClientInfo>("/clients/{0}".ToFormat(clientID));
     }

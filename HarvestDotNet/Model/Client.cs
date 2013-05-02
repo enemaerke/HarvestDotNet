@@ -7,13 +7,13 @@ namespace HarvestDotNet.Model
   public class Client
   {
     [JsonProperty(PropertyName = "id")]
-    public int ID { get; set; }
+    public long ID { get; set; }
     [JsonProperty(PropertyName = "name")]
     public string Name { get; set; }
     [JsonProperty(PropertyName = "created_at")]
     public DateTime DateCreated { get; set; }
     [JsonProperty(PropertyName = "updated_at")]
-    public DateTime DateUpdated { get; set; }
+    public DateTime? DateUpdated { get; set; }
     [JsonProperty(PropertyName = "currency")]
     public string Currency { get; set; }
     [JsonProperty(PropertyName = "currency_symbol")]
@@ -23,7 +23,7 @@ namespace HarvestDotNet.Model
     [JsonProperty(PropertyName = "active")]
     public bool Active { get; set; }
     [JsonProperty(PropertyName = "cache_version")]
-    public int CacheVersion { get; set; }
+    public long? CacheVersion { get; set; }
     [JsonProperty(PropertyName = "highrise_id")]
     public int? HighriseID { get; set; }
     [JsonProperty(PropertyName = "statement_key")]
