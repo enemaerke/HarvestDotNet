@@ -21,9 +21,9 @@ namespace HarvestDotNet.Model
     [JsonProperty(PropertyName = "created_at")]
     public DateTime DateCreated { get; set; }
     [JsonProperty(PropertyName = "period_start")]
-    public DateTime PeriodStart { get; set; }
+    public DateTime? PeriodStart { get; set; }
     [JsonProperty(PropertyName = "period_end")]
-    public DateTime PeriodEnd { get; set; }
+    public DateTime? PeriodEnd { get; set; }
     [JsonProperty(PropertyName = "updated_at")]
     public DateTime DateUpdated { get; set; }
     [JsonProperty(PropertyName = "number")]
@@ -37,7 +37,7 @@ namespace HarvestDotNet.Model
     [JsonProperty(PropertyName = "client_key")]
     public string ClientKey { get; set; }
     [JsonProperty(PropertyName = "created_by_id")]
-    public int CreatedByID { get; set; }
+    public int? CreatedByID { get; set; }
     [JsonProperty(PropertyName = "currency")]
     public string Currency { get; set; }
     [JsonProperty(PropertyName = "discount_amount")]
