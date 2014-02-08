@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Net.Http;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace HarvestDotNet
 {
@@ -20,6 +18,11 @@ namespace HarvestDotNet
       var taskSource = new TaskCompletionSource<TResult>();
       taskSource.SetResult(result);
       return taskSource.Task;
+    }
+    public static async Task<T> ReadAsAsync<T>(this HttpContent httpContent)
+    {
+        var jsonString = await httpContent.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<T>(jsonString);
     }
   }
 }

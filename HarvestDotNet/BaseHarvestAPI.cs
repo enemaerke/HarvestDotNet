@@ -2,40 +2,37 @@
 using System.Globalization;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using HarvestDotNet.Model;
+using Newtonsoft.Json;
 
 namespace HarvestDotNet
 {
   public class HarvestApi
   {
     private readonly HttpClient m_client;
-    private readonly HarvestApiSettings m_settings;
-    private readonly MediaTypeFormatter m_formatter;
 
-    private string GetBasicAuthenticationToken()
+    private string GetBasicAuthenticationToken(string userName, string password)
     {
       return Convert.ToBase64String(Encoding.UTF8.GetBytes(string.Format(CultureInfo.InvariantCulture,
-          "{0}:{1}", m_settings.UserName, m_settings.Password)));
+          "{0}:{1}", userName, password)));
     }
 
     protected HarvestApi(HarvestApiSettings settings)
     {
       m_client = new HttpClient();
-      m_settings = settings;
+      m_client.BaseAddress = settings.BaseUri;
 
       m_client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-      m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", GetBasicAuthenticationToken());
-      m_formatter = new JsonMediaTypeFormatter();
+      m_client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", GetBasicAuthenticationToken(settings.UserName, settings.Password));
     }
+
 
     protected Task<T> Request<T>(string relativePath) where T : class
     {
-      Uri completeUri = new Uri(m_settings.BaseUri, relativePath);
-      return m_client.GetAsync(completeUri)
+      var req = new HttpRequestMessage(HttpMethod.Get, relativePath);
+      return m_client.SendAsync(req)
         .ContinueWith(t =>
                         {
                           RaiseExceptionIfUnableToReach(t);
@@ -51,23 +48,26 @@ namespace HarvestDotNet
       where TReply : class
       where TData : class
     {
-      Uri completeUri = new Uri(m_settings.BaseUri, relativePath);
-      return m_client.PostAsync(completeUri.ToString(), data, m_formatter)
-        .ContinueWith(t =>
-                        {
+      var request = new HttpRequestMessage(HttpMethod.Post, relativePath)
+      {
+          Content = new StringContent(JsonConvert.SerializeObject(data), new UTF8Encoding(), "application/json")
+      };
+      return m_client.SendAsync(request)
+      .ContinueWith(t =>
+                      {
                           RaiseExceptionIfUnableToReach(t);
                           RaiseThrottleExceptionIfNeeded(t);
                           t.Result.EnsureSuccessStatusCode();
-
+                          
                           return t.Result.Content.ReadAsAsync<TReply>();
-                        })
-        .Unwrap();
+                      })
+      .Unwrap();
     }
 
     protected Task<bool> Delete(string relativePath)
     {
-      Uri completeUri = new Uri(m_settings.BaseUri, relativePath);
-      return m_client.DeleteAsync(completeUri.ToString())
+      var request = new HttpRequestMessage(HttpMethod.Delete, relativePath);
+      return m_client.SendAsync(request)
         .ContinueWith(t =>
         {
           RaiseExceptionIfUnableToReach(t);

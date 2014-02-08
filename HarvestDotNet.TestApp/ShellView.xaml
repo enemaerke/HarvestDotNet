@@ -6,6 +6,7 @@
              xmlns:Toolkit="clr-namespace:Xceed.Wpf.Toolkit;assembly=WPFToolkit.Extended" 
              xmlns:PropertyGrid="clr-namespace:Xceed.Wpf.Toolkit.PropertyGrid;assembly=WPFToolkit.Extended" 
              xmlns:TestApp="clr-namespace:HarvestDotNet.TestApp"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              Width="700"  MaxHeight="700">
@@ -62,7 +63,7 @@
           <DatePicker SelectedDate="{Binding SelectedDate, Mode=TwoWay}" Grid.Column="1" Grid.Row="0" Margin="0,5,0,5" MinWidth="200"/>
 
           <TextBlock Text="Number" VerticalAlignment="Center" Grid.Row="1"/>
-          <Toolkit:IntegerUpDown Value="{Binding SelectedNumber, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" MinWidth="80" />
+          <xctk:IntegerUpDown Value="{Binding SelectedNumber, Mode=TwoWay}" Grid.Row="1" Grid.Column="1" Margin="0,5,0,5" MinWidth="80" />
 
           <TextBlock Text="Properties" VerticalAlignment="Top" Grid.Row="2"/>
           <TabControl ItemsSource="{Binding Properties}" Grid.Row="3" Grid.ColumnSpan="2" x:Name="tabs"
@@ -74,7 +75,7 @@
             </TabControl.ItemTemplate>
             <TabControl.ContentTemplate>
               <DataTemplate>
-                <PropertyGrid:PropertyGrid SelectedObject="{Binding .}" ShowSearchBox="False" ShowAdvancedOptions="False" ShowSortOptions="True"
+                <xctk:PropertyGrid SelectedObject="{Binding .}" ShowSearchBox="False" ShowAdvancedOptions="False" ShowSortOptions="True"
                                            ShowSummary="False"/>
               </DataTemplate>
             </TabControl.ContentTemplate>
