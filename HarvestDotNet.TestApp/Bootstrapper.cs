@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Linq;
-using System.Windows;
 using Caliburn.Micro;
 
 namespace HarvestDotNet.TestApp
 {
-  public class Bootstrapper : Bootstrapper<ShellViewModel>
+  public class Bootstrapper : BootstrapperBase
   {
     private CompositionContainer m_container;
-    public Bootstrapper()
-    {
-    }
 
-    protected override void Configure()
+      protected override void Configure()
     {
       m_container = new CompositionContainer(new AggregateCatalog(AssemblySource.Instance.Select(x => new AssemblyCatalog(x)).OfType<ComposablePartCatalog>()));
 
@@ -34,12 +29,13 @@ namespace HarvestDotNet.TestApp
       string contract = string.IsNullOrEmpty(key) ? AttributedModelServices.GetContractName(service) : key;
       var exports = m_container.GetExportedValues<object>(contract);
 
-      if (exports.Count() > 0)
+      var instance = exports.FirstOrDefault();
+      if (instance == null)
       {
-        return exports.First();
+          throw new Exception(string.Format("Could not locate any instances of contract {0}.", contract));
       }
 
-      throw new Exception(string.Format("Could not locate any instances of contract {0}.", contract));
+      return instance;
 
     }
   }

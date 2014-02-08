@@ -54,7 +54,7 @@ namespace HarvestDotNet.Tests.TestSupport
           m_port = port;
           break;
         }
-        catch (Exception)
+        catch (Exception ex)
         {
           m_listener = null;
         }
