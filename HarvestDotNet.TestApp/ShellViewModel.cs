@@ -84,6 +84,16 @@ namespace HarvestDotNet.TestApp
                };
     }
 
+    public void GetInvoices()
+    {
+      Do<InvoicesApi, List<InvoiceInfo>>(api => api.GetInvoices());
+    }
+
+    public void GetSpecificInvoice()
+    {
+        Do<InvoicesApi, InvoiceInfo>(api => api.GetInvoiceById(SelectedNumber));
+    }
+
     public void GetProjects()
     {
       Do<ProjectsApi,List<ProjectInfo>>(api => api.GetProjects());

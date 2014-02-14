@@ -87,6 +87,7 @@
       <Border Grid.Row="4" Grid.ColumnSpan="2" Margin="4,8,4,8" CornerRadius="3" Background="DarkBlue">
         <StackPanel MaxWidth="300" >
         <Button x:Name="GetProjects" Content="Get Projects"/>
+        <Button x:Name="GetInvoices" Content="Get Invoices"/>
         <Button x:Name="GetSpecificProject" Content="Get Project by number"/>
           <Button x:Name="GetToday" Content="Get today"/>
           <Button x:Name="GetDayEntry" Content="Get day "/>

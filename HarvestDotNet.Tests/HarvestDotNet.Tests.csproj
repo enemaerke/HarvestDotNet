@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClientsRequests.cs" />
+    <Compile Include="InvoicesRequests.cs" />
     <Compile Include="HttpStandards.cs" />
     <Compile Include="JsonParsing.cs" />
     <Compile Include="ProjectsRequests.cs" />
@@ -64,6 +66,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Examples\AllProjects.json" />
+    <None Include="Examples\AllInvoices.json" />
+    <None Include="Examples\AllClients.json" />
+    <None Include="Examples\SingleInvoice.json" />
     <None Include="Examples\Daily.json" />
     <None Include="Examples\SingleProject.json" />
     <None Include="packages.config" />
